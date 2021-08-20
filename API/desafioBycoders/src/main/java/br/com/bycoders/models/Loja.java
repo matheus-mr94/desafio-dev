@@ -22,6 +22,12 @@ public class Loja {
 	private List<Operacao> operacoes;
 	
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getNomeLoja() {
 		return nomeLoja;
 	}

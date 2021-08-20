@@ -1,6 +1,5 @@
 package br.com.bycoders.models;
 
-import java.sql.Time;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -14,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Operacao {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -22,12 +21,20 @@ public class Operacao {
 	private Double valor;
 	private LocalDate data;
 	private String tipoTransacao;
-	private Time hora;
-	
+	private String hora;
+
 	@ManyToOne
 	@JsonBackReference
 	@JoinColumn(name = "loja_id", referencedColumnName = "id")
 	private Loja loja;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getCpfBeneficiario() {
 		return cpfBeneficiario;
@@ -61,11 +68,11 @@ public class Operacao {
 		this.tipoTransacao = tipoTransacao;
 	}
 
-	public Time getHora() {
+	public String getHora() {
 		return hora;
 	}
 
-	public void setHora(Time hora) {
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
 

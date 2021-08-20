@@ -1,6 +1,5 @@
 package br.com.bycoders.dtos;
 
-import java.sql.Time;
 import java.time.LocalDate;
 
 import br.com.bycoders.models.Loja;
@@ -11,7 +10,7 @@ public class OperacaoDTO {
 	private Double valor;
 	private LocalDate data;
 	private String tipoTransacao;
-	private Time hora;
+	private String hora;
 	private Loja loja;
 
 	public String getCpfBeneficiario() {
@@ -46,11 +45,11 @@ public class OperacaoDTO {
 		this.tipoTransacao = tipoTransacao;
 	}
 
-	public Time getHora() {
+	public String getHora() {
 		return hora;
 	}
 
-	public void setHora(Time hora) {
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
 
