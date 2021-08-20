@@ -2,6 +2,7 @@ package br.com.bycoders.dtos;
 
 import java.time.LocalDate;
 
+import br.com.bycoders.enums.TipoTransacao;
 import br.com.bycoders.models.Loja;
 
 public class OperacaoDTO {
@@ -9,7 +10,7 @@ public class OperacaoDTO {
 	private String cpfBeneficiario;
 	private Double valor;
 	private LocalDate data;
-	private String tipoTransacao;
+	private TipoTransacao tipoTransacao;
 	private String hora;
 	private Loja loja;
 
@@ -37,11 +38,12 @@ public class OperacaoDTO {
 		this.data = data;
 	}
 
-	public String getTipoTransacao() {
+
+	public TipoTransacao getTipoTransacao() {
 		return tipoTransacao;
 	}
 
-	public void setTipoTransacao(String tipoTransacao) {
+	public void setTipoTransacao(TipoTransacao tipoTransacao) {
 		this.tipoTransacao = tipoTransacao;
 	}
 

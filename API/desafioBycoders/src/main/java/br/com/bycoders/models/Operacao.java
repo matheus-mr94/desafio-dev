@@ -3,6 +3,8 @@ package br.com.bycoders.models;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import br.com.bycoders.enums.TipoTransacao;
 
 @Entity
 public class Operacao {
@@ -20,7 +24,9 @@ public class Operacao {
 	private String cpfBeneficiario;
 	private Double valor;
 	private LocalDate data;
-	private String tipoTransacao;
+	
+	@Enumerated(EnumType.STRING)
+	private TipoTransacao tipoTransacao;
 	private String hora;
 
 	@ManyToOne
@@ -60,11 +66,12 @@ public class Operacao {
 		this.data = data;
 	}
 
-	public String getTipoTransacao() {
+
+	public TipoTransacao getTipoTransacao() {
 		return tipoTransacao;
 	}
 
-	public void setTipoTransacao(String tipoTransacao) {
+	public void setTipoTransacao(TipoTransacao tipoTransacao) {
 		this.tipoTransacao = tipoTransacao;
 	}
 
