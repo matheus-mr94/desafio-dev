@@ -1,32 +1,17 @@
-package br.com.bycoders.models;
+package br.com.bycoders.dtos;
 
 import java.sql.Time;
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import br.com.bycoders.models.Loja;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+public class OperacaoDTO {
 
-@Entity
-public class Operacao {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 	private String cpfBeneficiario;
 	private Double valor;
 	private LocalDate data;
 	private String tipoTransacao;
 	private Time hora;
-	
-	@ManyToOne
-	@JsonBackReference
-	@JoinColumn(name = "loja_id", referencedColumnName = "id")
 	private Loja loja;
 
 	public String getCpfBeneficiario() {
