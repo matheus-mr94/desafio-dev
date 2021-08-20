@@ -13,6 +13,7 @@ public class LojaMapper {
 		loja.setNomeDono(dto.getNomeDono());
 		loja.setNomeLoja(dto.getNomeLoja());
 		loja.setOperacoes(dto.getOperacoes());
+		loja.setSaldo(dto.getSaldo());
 		return loja;
 	}
 	
@@ -21,6 +22,7 @@ public class LojaMapper {
 		dto.setNomeDono(loja.getNomeDono());
 		dto.setNomeLoja(loja.getNomeLoja());
 		dto.setOperacoes(loja.getOperacoes());
+		dto.setSaldo(loja.getSaldo());
 		return dto;
 	}
 	
