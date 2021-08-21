@@ -27,6 +27,7 @@ public class OperacaoMapper {
 		operacao.setHora(getDateTime());
 		operacao.setValor(dto.getValor());
 		operacao.setLoja(dto.getLoja());
+		operacao.setCartao(dto.getCartao());
 		return operacao;
 		
 	}

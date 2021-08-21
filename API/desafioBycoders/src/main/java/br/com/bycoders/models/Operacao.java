@@ -23,6 +23,7 @@ public class Operacao {
 	private Long id;
 	private String cpfBeneficiario;
 	private Double valor;
+	private String cartao;
 	private LocalDate data;
 	
 	@Enumerated(EnumType.STRING)
@@ -56,6 +57,14 @@ public class Operacao {
 
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+	
+	public String getCartao() {
+		return cartao;
+	}
+
+	public void setCartao(String cartao) {
+		this.cartao = cartao;
 	}
 
 	public LocalDate getData() {

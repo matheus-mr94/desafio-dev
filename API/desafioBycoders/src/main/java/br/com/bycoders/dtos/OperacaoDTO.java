@@ -9,6 +9,7 @@ public class OperacaoDTO {
 
 	private String cpfBeneficiario;
 	private Double valor;
+	private String cartao;
 	private LocalDate data;
 	private TipoTransacao tipoTransacao;
 	private String hora;
@@ -30,6 +31,14 @@ public class OperacaoDTO {
 		this.valor = valor;
 	}
 
+	public String getCartao() {
+		return cartao;
+	}
+
+	public void setCartao(String cartao) {
+		this.cartao = cartao;
+	}
+
 	public LocalDate getData() {
 		return data;
 	}
@@ -37,7 +46,6 @@ public class OperacaoDTO {
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
-
 
 	public TipoTransacao getTipoTransacao() {
 		return tipoTransacao;
