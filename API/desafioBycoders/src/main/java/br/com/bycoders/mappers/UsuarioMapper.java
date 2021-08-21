@@ -1,5 +1,6 @@
 package br.com.bycoders.mappers;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import br.com.bycoders.dtos.UsuarioDTO;
@@ -13,7 +14,9 @@ public class UsuarioMapper {
 		Usuario user = new Usuario();
 		user.setNome(dto.getNome());
 		user.setEmail(dto.getEmail());
-		user.setSenha(dto.getSenha());
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String senhaCodificada = encoder.encode(dto.getSenha());
+		user.setSenha(senhaCodificada);
 		return user;
 	}
 
@@ -21,7 +24,9 @@ public class UsuarioMapper {
 		UsuarioDTO dto = new UsuarioDTO();
 		dto.setNome(user.getNome());
 		dto.setEmail(user.getEmail());
-		dto.setSenha(user.getSenha());
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String senhaCodificada = encoder.encode(user.getSenha());
+		dto.setSenha(senhaCodificada);
 		return dto;
 	}
 
