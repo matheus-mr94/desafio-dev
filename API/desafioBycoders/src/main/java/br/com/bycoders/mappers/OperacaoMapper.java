@@ -18,7 +18,8 @@ public class OperacaoMapper {
 		Date data = new Date();
 		return df.format(data);
 	}
-	
+
+	 
 	public Operacao toEntity(OperacaoDTO dto) {
 		Operacao operacao = new Operacao();
 		operacao.setCpfBeneficiario(dto.getCpfBeneficiario());
@@ -26,8 +27,8 @@ public class OperacaoMapper {
 		operacao.setData(LocalDate.now());
 		operacao.setHora(getDateTime());
 		operacao.setValor(dto.getValor());
-		operacao.setLoja(dto.getLoja());
 		operacao.setCartao(dto.getCartao());
+		operacao.setLoja(dto.getLoja());
 		return operacao;
 		
 	}
