@@ -19,7 +19,7 @@ public class OperacaoController {
 	OperacaoService operacaoService;
 	
 	@PostMapping
-	public ResponseEntity<String> create (@RequestBody OperacaoDTO dto){
+	public ResponseEntity<String> create (@RequestBody OperacaoDTO dto) throws Exception{
 		operacaoService.create(dto);
 		return new ResponseEntity<>("Operação realizada com sucesso", HttpStatus.ACCEPTED);
 	}

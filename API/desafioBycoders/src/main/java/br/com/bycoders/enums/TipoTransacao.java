@@ -2,8 +2,8 @@ package br.com.bycoders.enums;
 
 public enum TipoTransacao {
 
-	DEBITO(1, "Entrada", "-"),
-	BOLETO(2, "Saída", "+"),
+	DEBITO(1, "Entrada", "+"),
+	BOLETO(2, "Saída", "-"),
 	FINANCIAMENTO(3, "Saída", "-"),
 	CREDITO(4, "Entrada", "+"),
 	RECEBIMENTO_EMPRESTIMO(5, "Entrada", "+"),
