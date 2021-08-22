@@ -8,6 +8,7 @@ public class LojaDTO {
 	private Long id;
 	private String nomeLoja;
 	private String nomeDono;
+	private String cpfBeneficiario;
 	private Double saldo;
 	private List<Operacao> operacoes;
 	
@@ -35,6 +36,14 @@ public class LojaDTO {
 
 	public void setNomeDono(String nomeDono) {
 		this.nomeDono = nomeDono;
+	}
+	
+	public String getCpfBeneficiario() {
+		return cpfBeneficiario;
+	}
+
+	public void setCpfBeneficiario(String cpfBeneficiario) {
+		this.cpfBeneficiario = cpfBeneficiario;
 	}
 
 	public Double getSaldo() {

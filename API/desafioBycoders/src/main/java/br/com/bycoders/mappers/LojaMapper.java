@@ -14,6 +14,7 @@ public class LojaMapper {
 		loja.setNomeLoja(dto.getNomeLoja());
 		loja.setOperacoes(dto.getOperacoes());
 		loja.setSaldo(dto.getSaldo());
+		loja.setCpfBeneficiario(dto.getCpfBeneficiario());
 		return loja;
 	}
 	
@@ -23,6 +24,7 @@ public class LojaMapper {
 		dto.setNomeLoja(loja.getNomeLoja());
 		dto.setOperacoes(loja.getOperacoes());
 		dto.setSaldo(loja.getSaldo());
+		dto.setCpfBeneficiario(loja.getCpfBeneficiario());
 		return dto;
 	}
 	

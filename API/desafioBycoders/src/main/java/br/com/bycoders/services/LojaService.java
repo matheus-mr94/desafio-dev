@@ -22,7 +22,7 @@ public class LojaService {
 	LojaMapper lojaMapper;
 	
 	public Loja findById(Long id) {
-		return lojaRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id + "não encontrado"));
+		return lojaRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Id número" + id + " não encontrado"));
 	}
 	
 	public Loja create(LojaDTO dto) {
@@ -40,6 +40,7 @@ public class LojaService {
 		loja.setNomeLoja(dto.getNomeLoja());
 		loja.setSaldo(dto.getSaldo());
 		loja.setOperacoes(dto.getOperacoes());
+		loja.setCpfBeneficiario(dto.getCpfBeneficiario());
 		return lojaMapper.toDTO(lojaRepository.save(loja));
 	}
 	

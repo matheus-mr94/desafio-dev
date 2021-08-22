@@ -21,7 +21,6 @@ public class Operacao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String cpfBeneficiario;
 	private Double valor;
 	private String cartao;
 	private LocalDate data;
@@ -41,14 +40,6 @@ public class Operacao {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getCpfBeneficiario() {
-		return cpfBeneficiario;
-	}
-
-	public void setCpfBeneficiario(String cpfBeneficiario) {
-		this.cpfBeneficiario = cpfBeneficiario;
 	}
 
 	public Double getValor() {

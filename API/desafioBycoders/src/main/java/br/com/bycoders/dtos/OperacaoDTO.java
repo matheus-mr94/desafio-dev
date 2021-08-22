@@ -7,7 +7,6 @@ import br.com.bycoders.models.Loja;
 
 public class OperacaoDTO {
 
-	private String cpfBeneficiario;
 	private Double valor;
 	private String cartao;
 	private LocalDate data;
@@ -15,13 +14,7 @@ public class OperacaoDTO {
 	private String hora;
 	private Loja loja;
 
-	public String getCpfBeneficiario() {
-		return cpfBeneficiario;
-	}
-
-	public void setCpfBeneficiario(String cpfBeneficiario) {
-		this.cpfBeneficiario = cpfBeneficiario;
-	}
+	
 
 	public Double getValor() {
 		return valor;

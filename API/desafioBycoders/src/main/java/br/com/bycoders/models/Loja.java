@@ -2,6 +2,7 @@ package br.com.bycoders.models;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,9 @@ public class Loja {
 	private Long id;
 	private String nomeLoja;
 	private String nomeDono;
+	
+	@Column(unique = true)
+	private String cpfBeneficiario;
 	private Double saldo;
 	
 	@OneToMany(mappedBy = "loja")
@@ -39,6 +43,13 @@ public class Loja {
 	}
 	public void setNomeDono(String nomeDono) {
 		this.nomeDono = nomeDono;
+	}
+	
+	public String getCpfBeneficiario() {
+		return cpfBeneficiario;
+	}
+	public void setCpfBeneficiario(String cpfBeneficiario) {
+		this.cpfBeneficiario = cpfBeneficiario;
 	}
 	public Double getSaldo() {
 		return saldo;

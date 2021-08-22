@@ -21,8 +21,7 @@ public class OperacaoMapper {
 
 	 
 	public Operacao toEntity(OperacaoDTO dto) {
-		Operacao operacao = new Operacao();
-		operacao.setCpfBeneficiario(dto.getCpfBeneficiario());
+		Operacao operacao = new Operacao();		
 		operacao.setTipoTransacao(dto.getTipoTransacao());
 		operacao.setData(LocalDate.now());
 		operacao.setHora(getDateTime());

@@ -41,7 +41,7 @@ public class UsuarioService {
 	private AuthenticationManager authenticationManager;
 
 	public Usuario findById(Long id) {
-		return usuarioRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id + "não encontrado"));
+		return usuarioRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Id número" + id + " não encontrado"));
 	}
 
 	public Usuario create(UsuarioDTO dto) {
@@ -55,7 +55,7 @@ public class UsuarioService {
 
 	public UsuarioDetalheDTO getById(Long id) {
 		return usuarioRepository.findById(id).map(usuarioMapper::toShow)
-				.orElseThrow(() -> new EntityNotFoundException(id + "não encontrado"));
+				.orElseThrow(() -> new EntityNotFoundException("Id número" + id + " não encontrado"));
 	}
 
 	public UsuarioDTO update(Long id, UsuarioDTO dto) {
