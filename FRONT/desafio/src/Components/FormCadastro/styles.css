@@ -1,0 +1,25 @@
+.btn {
+    background-color: #000;
+    width: 120px;
+    height: 40px;
+    color:  #fff;
+    border-radius: 30px;
+  }
+  .input{
+    margin: 5px;
+    height: 10px;
+    border: 2.5px solid #000;
+    border-radius: 15px;
+    padding: 10px;
+    width: 220px;
+  }
+  .botoes{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  .link{
+    margin-left: 5px ;
+    color: #fff;
+  }

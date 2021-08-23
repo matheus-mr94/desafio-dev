@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable().exceptionHandling().and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 
-				.antMatchers("/login", "/usuario/cadastro",  "/swagger-ui.html").permitAll()
+				.antMatchers("/login", "/usuario/cadastro","/swagger-ui.html").permitAll()
 
 				.anyRequest().authenticated();
 

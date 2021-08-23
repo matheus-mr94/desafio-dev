@@ -1,0 +1,15 @@
+table{
+    border: 3px #000 solid;
+}
+tbody{
+    border-top: 1px #000 solid;
+}
+thead{
+    background-color: #000;
+    color: #fff;
+}
+td{
+    background-color: #02be3b;
+}
+
+

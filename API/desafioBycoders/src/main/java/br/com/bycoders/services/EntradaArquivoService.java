@@ -24,7 +24,7 @@ public class EntradaArquivoService {
 
 	@Autowired
 	LojaRepository lojaRepository;
-	
+
 	@Autowired
 	OperacaoService operacaoService;
 
@@ -36,32 +36,32 @@ public class EntradaArquivoService {
 			Loja loja = new Loja();
 
 			String[] line = sc.nextLine().split(";");
-			String col1 = line[0];
+			String transacao = line[0];
 			String col2 = line[1];
-			String col3 = line[2];
-			String col4 = line[3];
-			String col5 = line[4];
+			String valorTransacao = line[2];
+			String cpf = line[3];
+			String cartao = line[4];
 			String col6 = line[5];
-			String col7 = line[6];
-			String col8 = line[7];
-			
-			if (col1.equals("1")) {
+			String donoLoja = line[6];
+			String nomeLoja = line[7];
+
+			if (transacao.equals("1")) {
 				operacao.setTipoTransacao(TipoTransacao.DEBITO);
-			} else if (col1.equals("2")) {
+			} else if (transacao.equals("2")) {
 				operacao.setTipoTransacao(TipoTransacao.BOLETO);
-			} else if (col1.equals("3")) {
+			} else if (transacao.equals("3")) {
 				operacao.setTipoTransacao(TipoTransacao.FINANCIAMENTO);
-			} else if (col1.equals("4")) {
+			} else if (transacao.equals("4")) {
 				operacao.setTipoTransacao(TipoTransacao.CREDITO);
-			} else if (col1.equals("5")) {
+			} else if (transacao.equals("5")) {
 				operacao.setTipoTransacao(TipoTransacao.RECEBIMENTO_EMPRESTIMO);
-			} else if (col1.equals("6")) {
+			} else if (transacao.equals("6")) {
 				operacao.setTipoTransacao(TipoTransacao.VENDAS);
-			} else if (col1.equals("7")) {
+			} else if (transacao.equals("7")) {
 				operacao.setTipoTransacao(TipoTransacao.RECEBIMENTO_TED);
-			} else if (col1.equals("8")) {
+			} else if (transacao.equals("8")) {
 				operacao.setTipoTransacao(TipoTransacao.RECEBIMENTO_DOC);
-			} else if (col1.equals("9")) {
+			} else if (transacao.equals("9")) {
 				operacao.setTipoTransacao(TipoTransacao.ALUGUEL);
 			}
 
@@ -71,9 +71,9 @@ public class EntradaArquivoService {
 			String data = ano + "-" + mes + "-" + dia;
 
 			operacao.setData(LocalDate.parse(data));
-			Double valor = Double.parseDouble(col3) / 100;
+			Double valor = Double.parseDouble(valorTransacao) / 100;
 			operacao.setValor(valor);
-			operacao.setCartao(col5);
+			operacao.setCartao(cartao);
 
 			String hora = col6.substring(0, 2);
 			String min = col6.substring(2, 4);
@@ -81,18 +81,23 @@ public class EntradaArquivoService {
 			String horaFormatada = hora + ":" + min + ":" + segundos;
 			operacao.setHora(horaFormatada);
 
-			if (!lojaRepository.findByCpfBeneficiario(col4).isPresent()) {
-				loja.setCpfBeneficiario(col4);
-				loja.setNomeDono(col7);
-				loja.setNomeLoja(col8);
+			if (!lojaRepository.findByCpfBeneficiario(cpf).isPresent()) {
+				loja.setCpfBeneficiario(cpf);
+				loja.setNomeDono(donoLoja);
+				loja.setNomeLoja(nomeLoja);
 			}
-			if(loja.getCpfBeneficiario() != null) {
+			if (loja.getCpfBeneficiario() != null) {
 				lojaRepository.save(loja);
-				operacao.setLoja(loja);	
-			}
-		
+				operacao.setLoja(loja);
+			} else {
+				List<Loja> listaLojas = lojaRepository.findAll();
+				for (Loja lojas : listaLojas) {
+					if (lojas.getCpfBeneficiario().equals(cpf)) {
+						operacao.setLoja(lojas);
+					}
+				}
+		}
 			listaOperacoes.add(operacao);
-
 		}
 		sc.close();
 		operacaoRepository.saveAll(listaOperacoes);
