@@ -1,6 +1,7 @@
-import FormCadastro from '../../Components/FormCadastro'
-import './styles.css'
-const Cadastro = () => {
+import FormCadastroLoja from "../../../Components/FormCadastroLoja";
+
+const CadastroLoja = () => {
+
 
     return (
         <div className="container">
@@ -8,18 +9,16 @@ const Cadastro = () => {
                 <h1 className="titulo"> Desafio bycoders_</h1>
             </div>
             <div className="container2">
-                <div className="box"> 
+                <div className="box">
                     <div className="login">
-                        <FormCadastro/>
+                        <FormCadastroLoja />
                     </div>
                 </div>
             </div>
-
-
-
         </div>
 
     )
 }
 
-export default Cadastro;
+
+export default CadastroLoja;

@@ -1,8 +1,9 @@
 import { BrowserRouter,Route,Switch } from 'react-router-dom';
-import Cadastro from '../Paginas/Cadastro';
 import Home from '../Paginas/Home';
 import Lojas from '../Paginas/Lojas';
 import { useState, useEffect } from 'react';
+import CadastroUsuario from '../Paginas/CadastroUsuario';
+import CadastroLoja from '../Paginas/Lojas/CadastroLoja';
 
 function Rotas(){
 
@@ -27,14 +28,17 @@ function Rotas(){
         <BrowserRouter>
       
             <Switch>
-                <Route exact path="/" onLogin={onLogin}>
+                <Route exact path="/" token={token} onLogin={onLogin}>
                     <Home/>
                 </Route>
                 <Route path="/cadastro">
-                    <Cadastro/>
+                    <CadastroUsuario/>
                 </Route>
                 <Route path="/lojas">
                     <Lojas/>
+                </Route>
+                <Route path="/loja/cadastro">
+                    <CadastroLoja/>
                 </Route>
             </Switch>
         </BrowserRouter>

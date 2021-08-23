@@ -37,11 +37,11 @@ public class EntradaArquivoService {
 
 			String[] line = sc.nextLine().split(";");
 			String transacao = line[0];
-			String col2 = line[1];
+			String dataSemFormato = line[1];
 			String valorTransacao = line[2];
 			String cpf = line[3];
 			String cartao = line[4];
-			String col6 = line[5];
+			String horaSemFormato = line[5];
 			String donoLoja = line[6];
 			String nomeLoja = line[7];
 
@@ -65,9 +65,9 @@ public class EntradaArquivoService {
 				operacao.setTipoTransacao(TipoTransacao.ALUGUEL);
 			}
 
-			String ano = col2.substring(0, 4);
-			String mes = col2.substring(4, 6);
-			String dia = col2.substring(6, 8);
+			String ano = dataSemFormato.substring(0, 4);
+			String mes = dataSemFormato.substring(4, 6);
+			String dia = dataSemFormato.substring(6, 8);
 			String data = ano + "-" + mes + "-" + dia;
 
 			operacao.setData(LocalDate.parse(data));
@@ -75,9 +75,9 @@ public class EntradaArquivoService {
 			operacao.setValor(valor);
 			operacao.setCartao(cartao);
 
-			String hora = col6.substring(0, 2);
-			String min = col6.substring(2, 4);
-			String segundos = col6.substring(4, 6);
+			String hora = horaSemFormato.substring(0, 2);
+			String min = horaSemFormato.substring(2, 4);
+			String segundos = horaSemFormato.substring(4, 6);
 			String horaFormatada = hora + ":" + min + ":" + segundos;
 			operacao.setHora(horaFormatada);
 
