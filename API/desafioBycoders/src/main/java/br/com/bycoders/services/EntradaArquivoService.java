@@ -1,10 +1,10 @@
 package br.com.bycoders.services;
 
 import java.io.InputStream;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class EntradaArquivoService {
 	@Autowired
 	OperacaoService operacaoService;
 
-	public void LeituraArquivos(InputStream path) throws ParseException {
+	public void LeituraArquivos(InputStream path) throws Exception {
 		List<Operacao> listaOperacoes = new ArrayList<>();
 		Scanner sc = new Scanner(path);
 		while (sc.hasNext()) {
@@ -97,10 +97,33 @@ public class EntradaArquivoService {
 					}
 				}
 		}
+			this.setSaldo(operacao);
 			listaOperacoes.add(operacao);
 		}
 		sc.close();
 		operacaoRepository.saveAll(listaOperacoes);
 	}
+	public Operacao setSaldo(Operacao operacao) throws Exception {
+
+        Optional<Loja> loja  = lojaRepository.findById(operacao.getLoja().getId());
+
+        if (loja.isPresent()) {
+            double novoSaldo;
+            double valorOperacao = operacao.getValor();
+            if(loja.get().getSaldo()== null) {
+              loja.get().setSaldo(10000.0);
+            }
+            double saldoLoja = loja.get().getSaldo();
+            if (operacao.getTipoTransacao().getSinal().equals("+")) {
+                 novoSaldo = saldoLoja + valorOperacao;
+                 loja.get().setSaldo(novoSaldo);
+            }else if(saldoLoja >= valorOperacao){
+                 novoSaldo = saldoLoja - valorOperacao;
+                    loja.get().setSaldo(novoSaldo);
+            }else
+            throw new Exception("Saldo insuficiente");
+        }
+        return operacaoRepository.save(operacao);
+    }
 
 }

@@ -1,0 +1,143 @@
+O projeto foi desenvolvido na linguagem Java utilizando o SpringBoot + Eclipse, foi utilizado 
+SpringData JPA e o padrão MVC, focando desenvolver uma APIRest.
+
+O projeto tinha como objetivo realizar o upload de um arquivo, interpretar os dados
+e salva-los em um banco de dados relacional.
+
+No projeto foram criados duas entidades principais 
+Operacao e Loja.
+Na loja contém os seguintes campos :
+-Nome do dono
+-Nome da loja
+-Cpf do beneficiário 
+-Saldo
+-Lista de transações realizadas.
+
+Na operação contém os seguintes campos:
+- A entidade Loja
+- Tipo de transação
+- Número do cartão da transação
+- Valor da transação
+- Hora da transação
+- Data da transação
+
+Além disso foi criado uma entidade Usuário com os seguintes campos:
+- Nome 
+- Email
+- Senha
+
+Essa entidade foi criada para que pudesse ser utilizado uma autenticação JWT.
+Foi realizado a documentação utilizando o Swagger.
+
+Início da utilização da API
+*porta = porta em que a aplicação estará rodando, por padrão ela irá rodar na 8080, caso haja
+alguma aplicação utilizando essa porta é possível alterar na aplication.properties utilizando server.port=numeroDaPorta
+
+Para iniciar a utilização da API é necessária a criação de um usuário.
+O usuário é salvo no banco com a senha criptografada.
+no seguinte endpoint POST http://localhost:porta*/usuario/cadastro.
+Logo em seguida é necessário realizar o login para obter o token de autorização.
+POST http://localhost:porta*/login
+
+Após feito a autenticação a aplicação permite acesso as demais funcionalidades.
+- Busca de todos os usuários => GET http://localhost:8080/usuario/todos
+- Busca de usuário por Id => GET http://localhost:8080/usuario/{id}
+- Edição de usuário => PUT http://localhost:8080/usuario/alterar/{id}
+- Exclusão de usuário => DELETE http://localhost:8080/usuario/excluir/{id}
+
+Os retornos de usuário apresentam id,nome,email.
+
+- Cadastro de loja no sistema => POST http://localhost:8080/loja
+- Listar todas as lojas no sistema => GET http://localhost:8080/loja/todas
+- Busca por uma loja específica utilizando o Id => GET http://localhost:8080/loja/alterar/{id}
+- Atualização de dados da loja no sistema passando o seu Id => PUT http://localhost:8080/loja/alterar/{id}
+- Exclusão de loja no sistema => DELETE http://localhost:8080/loja/excluir/{id}
+
+Na exibição de loja é apresentado uma lista com todas as transações realizadas, o nome do proprietário, cpf,
+nome da loja e o seu saldo.
+
+Operações
+Realizando uma operação => POST http://localhost:8080/operacao
+Na API é possível realizar uma operação manualmente setando os atributos:
+- CPF do beneficiário
+- Valor da transação
+- Tipo da Transação
+- Número do cartão
+- Loja(ID)
+
+Durante esse processo de operação será realizado um cálculo de acordo com o tipo de transação,
+se for uma transação do tipo de saída e a loja não tiver saldo suficiente a operação não será realizada,
+após a transação realizada o saldo da loja é atualizado.
+
+Leitura de Arquivo 
+Para realizar a leitura de arquivos é necessário estar autenticado.
+=> POST http://localhost:8080/arquivo
+A leitura de arquivo foi feita usando um split, foi necessário transformar o arquivo CNAB para o formato csv  separando por ";".
+Para interpretar as datas e as horas foi utilizado susbstring(lendo em intervalos a string para poder adicionar a pontuação).
+
+Para o sucesso da leitura do arquivo é necessário seguir o padrão do CNAB disponibilizado mas separando por ";" os campos.
+
+	   códigoTransação;data;valor;cpf;cartão;hora;donoLoja;nomeLoja
+Exemplo -> 3;20190301;0000014200;09620676017;4753****3153;153453;JOÃO MACEDO;BAR DO JOÃO  
+
+
+A leitura de arquivos cumpriu todas as exigências, a API realiza a leitura do arquivo,
+registra todas as operações e salva as lojas no banco de dados atualizando o seu saldo, porém 
+foi necessário algumas adaptações, pois para realizar os cálculos de acordo com a operação foi necessário
+atribuir um valor para o saldo, que não era apresentado no documento, nessa aplicação o saldo aplicado
+para cada Loja foi um valor fixo  de (10000.00), que era atribuido somente quando o saldo da loja era nulo.
+A leitura do arquivo é interrompida quando uma loja não apresenta saldo suficiente para uma operação de saída.
+
+A API ainda não apresenta, tratamentos para todas as exceções, mas pode ser aprimorada futuramente.
+
+
+Modelos JSON para teste via Insomnia ou Postman:
+
+Cadastro:
+{
+	"nome": "fulano",
+	"email": "email@email.com",
+	"senha": "123456"
+}
+
+Login:
+{
+	"email": "email@email.com",
+	"senha": "123456"
+}
+
+Loja:
+{
+	"nomeLoja" : "LOJA DO Ó - MATRIZ",
+	"nomeDono" : "MARIA JOSEFINA",
+	"cpfBeneficiario" : "55641815063",
+	"saldo" : 200
+}
+
+Operação:
+{
+	"cpfBeneficiario": "55641815063",
+	"valor": 150,
+	"tipoTransacao": "DEBITO", 
+	"cartao" : "4753****3153",
+	"loja":{
+		"id": 1
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

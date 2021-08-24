@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Login from '../../Components/FormLogin'
 import './styles.css'
 
@@ -11,7 +12,7 @@ const Home = ({onLogin}) => {
             <div className="container2">
                 <div className="box">
                     <div className="login">
-                        <Login onLogin={onLogin}/>
+                        <Login  onLogin={onLogin}/>
                     </div>
                 </div>
             </div>

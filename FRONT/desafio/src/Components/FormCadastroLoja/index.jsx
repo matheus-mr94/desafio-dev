@@ -39,15 +39,15 @@ const FormCadastroLoja = () =>{
                 </div>
                 <div >
                     <label>Dono</label>
-                    <input className="input" value={nomeDono} onChange={(evento) => setNomeDono(evento.target.value)} type="email" />
+                    <input className="input" value={nomeDono} onChange={(evento) => setNomeDono(evento.target.value)} type="text" />
                 </div>
                 <div>
                     <label className="label">CPF</label>
-                    <input className="input" value={cpfBeneficiario} onChange={(evento) => setCpfBeneficiario(evento.target.value)} type="password" />
+                    <input className="input" value={cpfBeneficiario} onChange={(evento) => setCpfBeneficiario(evento.target.value)} type="text" />
                 </div>
                 <div>
                     <label>Saldo</label>
-                    <input className="input" value={saldo} onChange={(evento) => setSaldo(evento.target.value)} type="password" />
+                    <input className="input" value={saldo} onChange={(evento) => setSaldo(evento.target.value)} type="text" />
                 </div>
                 <div className= "botoes">                    
                     <button className ="btn">Cadastrar</button>

@@ -1,0 +1,25 @@
+Na parte de frontend do projeto, eu busquei criar uma aplicação em React.Js.
+Após o clone da aplicação é necessário utilizar o comando npm i e logo em seguida npm start.
+Na aplicação do frontend utilizei o ReactJs para desenvolver uma aplicação web para poder consumir a API,
+foi criado uma tela inicial onde é realizado o Login ou redireciona para criar uma conta.
+Há uma tela com uma tabela que busca todas as lojas e mostra as suas informações porém como dei um foco maior na 
+parte do backend e para não estourar a deadline, ocorreram alguns problemas no frontend e não desenvolvi meios para
+transitar entre as telas e não completei a leitura de  arquivos.
+
+Tela home
+http://localhost:3000/
+
+Tela de cadastro de usuário
+http://localhost:3000/cadastro
+
+Tela de cadastro de Lojas*
+http://localhost:3000/loja/cadastro
+
+Tela com a listagem de Lojas*
+http://localhost:3000/lojas
+
+*Necessário autenticação.
+
+Nessa parte do projeto, acredito que a falta de prática por estar dando um maior foco na parte de desenvolvimento Java,
+acabou me prejudicando um pouco, mas caso haja necessidade, estou sempre disposto a aprender mais e a me aprimorar,
+para que possa sempre contribuir da melhor forma com o meu time e a empresa.
