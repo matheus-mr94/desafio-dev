@@ -88,7 +88,7 @@ atribuir um valor para o saldo, que não era apresentado no documento, nessa apl
 para cada Loja foi um valor fixo  de (10000.00), que era atribuido somente quando o saldo da loja era nulo.
 A leitura do arquivo é interrompida quando uma loja não apresenta saldo suficiente para uma operação de saída.
 
-A API ainda não apresenta, tratamentos para todas as exceções, mas pode ser aprimorada futuramente.
+A API ainda não apresenta tratamentos para todas as exceções, mas pode ser aprimorada futuramente.
 
 
 Modelos JSON para teste via Insomnia ou Postman:
